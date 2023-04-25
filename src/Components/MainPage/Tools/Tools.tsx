@@ -39,9 +39,12 @@ const Tools = () => {
 
 	return (
 		<div className={styles.toolsWrapper}>
+			<p className={styles.tool} style={{cursor: "default"}}>
+				<b>Фигура: </b>
+			</p>
 			{tools}
 		</div>
 	);
-}
+};
 
 export default Tools;

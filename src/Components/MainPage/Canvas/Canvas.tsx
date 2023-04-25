@@ -2,7 +2,7 @@ import React, {useEffect, useRef} from "react";
 import styles from "./Canvas.module.css";
 import drawSquare from "../../../CanvasUtils/DrawingShapes/DrawSquare";
 import drawCircle from "../../../CanvasUtils/DrawingShapes/DrawCircle";
-import {circleSettingsVar, regularPolygonSettingsVar, squareSettingsVar, starSettingsVar, toolsVar, triangleSettingsVar} from "../../../Apollo/Storage";
+import {circleSettingsVar, drawSettingsVar, regularPolygonSettingsVar, squareSettingsVar, starSettingsVar, toolsVar, triangleSettingsVar} from "../../../Apollo/Storage";
 import {TOOLS} from "../../../Constants/Tools";
 import drawTriangle from "../../../CanvasUtils/DrawingShapes/DrawTriangle";
 import drawStar from "../../../CanvasUtils/DrawingShapes/DrawStar";
@@ -62,24 +62,27 @@ const Canvas = () => {
 			y: (e.clientY - rect.top) / (rect.bottom - rect.top) * context.canvas.height
 		};
 		// console.log(pos);
+		const {color, filled} = drawSettingsVar();
 		switch (toolsVar()) {
 			case TOOLS.circle:
-				drawCircle(context, pos.x, pos.y, circleSettingsVar().size, circleSettingsVar().color, circleSettingsVar().filled);
+				drawCircle(context, pos.x, pos.y, circleSettingsVar().size, color, filled);
 				break;
-			case TOOLS.square:
-				drawSquare(context, pos.x, pos.y, squareSettingsVar().size, squareSettingsVar().color, squareSettingsVar().filled);
+			case TOOLS.square: {
+				let settings = squareSettingsVar();
+				drawSquare(context, pos.x, pos.y, settings.size, settings.rotation, color, filled);
 				break;
+			}
 			case TOOLS.triangle:
-				drawTriangle(context, pos.x, pos.y, triangleSettingsVar().size, triangleSettingsVar().rotation, triangleSettingsVar().color, triangleSettingsVar().filled);
+				drawTriangle(context, pos.x, pos.y, triangleSettingsVar().size, triangleSettingsVar().rotation, color, filled);
 				break;
 			case TOOLS.star: {
 				let settings = starSettingsVar();
-				drawStar(context, pos.x, pos.y, settings.size, settings.verticesNumber, settings.rotation, settings.color, settings.filled);
+				drawStar(context, pos.x, pos.y, settings.size, settings.verticesNumber, settings.rotation, color, filled);
 				break;
 			}
 			case TOOLS.regularPolygon: {
 				let settings = regularPolygonSettingsVar();
-				drawRegularPolygon(context, pos.x, pos.y, settings.size, settings.verticesNumber, settings.rotation, settings.color, settings.filled);
+				drawRegularPolygon(context, pos.x, pos.y, settings.size, settings.verticesNumber, settings.rotation, color, filled);
 				break;
 			}
 		}
@@ -88,6 +91,6 @@ const Canvas = () => {
 	return (
 		<canvas ref={canvas} className={styles.canvas} onClick={onClick}/>
 	);
-}
+};
 
 export default Canvas;

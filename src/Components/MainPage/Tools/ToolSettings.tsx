@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../MainPage.module.css";
-import {toolsVar} from "../../../Apollo/Storage";
+import {drawSettingsVar, toolsVar} from "../../../Apollo/Storage";
 import {TOOLS} from "../../../Constants/Tools";
 import {useReactiveVar} from "@apollo/client";
 import CircleSettings from "./CircleSettings";
@@ -16,6 +16,7 @@ import RegularPolygonSettings from "./RegularPolygonSettings";
 const ToolSettings = () => {
 
 	const tool = useReactiveVar(toolsVar);
+	const settings = useReactiveVar(drawSettingsVar);
 
 	let body: JSX.Element | null = null;
 
@@ -37,9 +38,44 @@ const ToolSettings = () => {
 			break;
 	}
 
+	const handleColorChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+		drawSettingsVar({
+			...drawSettingsVar(),
+			color: e.target.value
+		});
+	};
+
+	const handleFillChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+		drawSettingsVar({
+			...drawSettingsVar(),
+			filled: e.target.checked
+		});
+	};
+
 	return (
 		<div className={styles.toolSettingsWrapper}>
-			{body}
+			<div className={styles.toolSettingsGroup}>
+				<label htmlFor="color">Цвет</label>
+				<input
+					type="color"
+					id="color"
+					name="color"
+					value={settings.color}
+					onChange={handleColorChange}
+				/>
+				<br/>
+				<input
+					type="checkbox"
+					id="filled"
+					name="filled"
+					checked={settings.filled}
+					onChange={handleFillChange}
+				/>
+				<label htmlFor="filled">Заливка</label>
+			</div>
+			<div className={styles.toolSettingsGroup}>
+				{body}
+			</div>
 		</div>
 	);
 }

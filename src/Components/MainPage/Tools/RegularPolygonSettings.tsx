@@ -23,20 +23,6 @@ const RegularPolygonSettings = () => {
 		});
 	};
 
-	const handleColorChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		regularPolygonSettingsVar({
-			...regularPolygonSettingsVar(),
-			color: e.target.value
-		});
-	};
-
-	const handleFillChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		regularPolygonSettingsVar({
-			...regularPolygonSettingsVar(),
-			filled: e.target.checked
-		});
-	};
-
 	const handleVerticesNumberChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		regularPolygonSettingsVar({
 			...regularPolygonSettingsVar(),
@@ -100,25 +86,6 @@ const RegularPolygonSettings = () => {
 				value={settings.verticesNumber}
 				onChange={handleVerticesNumberChange}
 			/>
-
-			<br/>
-			<label htmlFor="regularPolygonColor">Цвет</label>
-			<input
-				type="color"
-				id="regularPolygonColor"
-				name="regularPolygonColor"
-				value={settings.color}
-				onChange={handleColorChange}
-			/>
-			<br/>
-			<input
-				type="checkbox"
-				id="regularPolygonFilled"
-				name="regularPolygonFilled"
-				checked={settings.filled}
-				onChange={handleFillChange}
-			/>
-			<label htmlFor="regularPolygonFilled">Заливка</label>
 		</>
 	);
 };

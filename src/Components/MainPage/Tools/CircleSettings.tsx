@@ -1,6 +1,7 @@
 import {useReactiveVar} from "@apollo/client";
 import {circleSettingsVar} from "../../../Apollo/Storage";
 import React from "react";
+import {Input} from "antd";
 
 /**
  * Component with settings for circle tool
@@ -16,20 +17,6 @@ const CircleSettings = () => {
 		});
 	};
 
-	const handleColorChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		circleSettingsVar({
-			...circleSettingsVar(),
-			color: e.target.value
-		});
-	};
-
-	const handleFillChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		circleSettingsVar({
-			...circleSettingsVar(),
-			filled: e.target.checked
-		});
-	};
-
 	return (
 		<>
 			<label htmlFor="circleSize">Радиус</label>
@@ -42,31 +29,14 @@ const CircleSettings = () => {
 				value={settings.size}
 				onChange={handleSizeChange}
 			/>
-			<input
+			<Input
 				type="number"
-				min="1"
-				max="500"
+				min={1}
+				max={500}
 				value={settings.size}
 				onChange={handleSizeChange}
+				width={"100px"}
 			/>
-			<br/>
-			<label htmlFor="circleColor">Цвет</label>
-			<input
-				type="color"
-				id="circleColor"
-				name="circleColor"
-				value={settings.color}
-				onChange={handleColorChange}
-			/>
-			<br/>
-			<input
-				type="checkbox"
-				id="circleFilled"
-				name="circleFilled"
-				checked={settings.filled}
-				onChange={handleFillChange}
-			/>
-			<label htmlFor="circleFilled">Заливка</label>
 		</>
 	);
 };

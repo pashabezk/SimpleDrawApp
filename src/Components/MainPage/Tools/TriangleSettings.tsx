@@ -23,23 +23,9 @@ const TriangleSettings = () => {
 		});
 	};
 
-	const handleColorChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		triangleSettingsVar({
-			...triangleSettingsVar(),
-			color: e.target.value
-		});
-	};
-
-	const handleFillChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		triangleSettingsVar({
-			...triangleSettingsVar(),
-			filled: e.target.checked
-		});
-	};
-
 	return (
 		<>
-			<label htmlFor="squareSize">Длина стороны</label>
+			<label htmlFor="squareSize">Размер</label>
 			<input
 				type="range"
 				id="triangleSize"
@@ -74,24 +60,6 @@ const TriangleSettings = () => {
 				value={settings.rotation}
 				onChange={handleRotationAngleChange}
 			/>
-			<br/>
-			<label htmlFor="triangleColor">Цвет</label>
-			<input
-				type="color"
-				id="triangleColor"
-				name="triangleColor"
-				value={settings.color}
-				onChange={handleColorChange}
-			/>
-			<br/>
-			<input
-				type="checkbox"
-				id="triangleFilled"
-				name="triangleFilled"
-				checked={settings.filled}
-				onChange={handleFillChange}
-			/>
-			<label htmlFor="triangleFilled">Заливка</label>
 		</>
 	);
 };

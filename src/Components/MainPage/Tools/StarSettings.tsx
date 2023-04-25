@@ -23,20 +23,6 @@ const StarSettings = () => {
 		});
 	};
 
-	const handleColorChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		starSettingsVar({
-			...starSettingsVar(),
-			color: e.target.value
-		});
-	};
-
-	const handleFillChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		starSettingsVar({
-			...starSettingsVar(),
-			filled: e.target.checked
-		});
-	};
-
 	const handleVerticesNumberChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		starSettingsVar({
 			...starSettingsVar(),
@@ -100,25 +86,6 @@ const StarSettings = () => {
 				value={settings.verticesNumber}
 				onChange={handleVerticesNumberChange}
 			/>
-
-			<br/>
-			<label htmlFor="starColor">Цвет</label>
-			<input
-				type="color"
-				id="starColor"
-				name="starColor"
-				value={settings.color}
-				onChange={handleColorChange}
-			/>
-			<br/>
-			<input
-				type="checkbox"
-				id="starFilled"
-				name="starFilled"
-				checked={settings.filled}
-				onChange={handleFillChange}
-			/>
-			<label htmlFor="starFilled">Заливка</label>
 		</>
 	);
 };

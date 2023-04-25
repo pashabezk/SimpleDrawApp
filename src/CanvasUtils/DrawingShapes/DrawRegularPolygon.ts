@@ -6,11 +6,11 @@ import {degreesToRadians, linearShiftPolygon, rotatePoint} from "./DrawTriangle"
  * @param {CanvasRenderingContext2D} cvsContext Canvas context
  * @param {number} x X position of shape center
  * @param {number} y Y position of shape center
- * @param {number} size=10 Regular polygon circumscribed circle radius
- * @param {number} verticesNumber=5 Number of polygon vertices
- * @param {number} rotationAngle=0 Rotation angle in degrees
- * @param {string} color="#000000" Color
- * @param {boolean} fill=false need to fill or only border
+ * @param {number} [size=10] Regular polygon circumscribed circle radius
+ * @param {number} [verticesNumber=5] Number of polygon vertices
+ * @param {number} [rotationAngle=0] Rotation angle in degrees
+ * @param {string} [color="#000000"] Color
+ * @param {boolean} [fill=false] need to fill or only border
  */
 const drawRegularPolygon = (
 	cvsContext: CanvasRenderingContext2D,
@@ -25,7 +25,7 @@ const drawRegularPolygon = (
 	cvsContext.fillStyle = color;
 	cvsContext.strokeStyle = color;
 
-	let vertexAngle = rotationAngle;
+	let vertexAngle = degreesToRadians(rotationAngle);
 	let deltaVertexAngle = degreesToRadians(360 / verticesNumber);
 
 	// start coordinates calculated as if shape center at (0, 0)

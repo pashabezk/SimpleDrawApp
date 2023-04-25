@@ -16,17 +16,10 @@ const SquareSettings = () => {
 		});
 	};
 
-	const handleColorChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+	const handleRotationAngleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
 		squareSettingsVar({
 			...squareSettingsVar(),
-			color: e.target.value
-		});
-	};
-
-	const handleFillChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-		squareSettingsVar({
-			...squareSettingsVar(),
-			filled: e.target.checked
+			rotation: Number(e.target.value)
 		});
 	};
 
@@ -50,23 +43,23 @@ const SquareSettings = () => {
 				onChange={handleSizeChange}
 			/>
 			<br/>
-			<label htmlFor="squareColor">Цвет</label>
+			<label htmlFor="squareRotation">Поворот</label>
 			<input
-				type="color"
-				id="squareColor"
-				name="squareColor"
-				value={settings.color}
-				onChange={handleColorChange}
+				type="range"
+				id="squareRotation"
+				name="squareRotation"
+				min="0"
+				max="359"
+				value={settings.rotation}
+				onChange={handleRotationAngleChange}
 			/>
-			<br/>
 			<input
-				type="checkbox"
-				id="squareFilled"
-				name="squareFilled"
-				checked={settings.filled}
-				onChange={handleFillChange}
+				type="number"
+				min="0"
+				max="359"
+				value={settings.rotation}
+				onChange={handleRotationAngleChange}
 			/>
-			<label htmlFor="squareFilled">Заливка</label>
 		</>
 	);
 };
