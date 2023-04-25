@@ -1,0 +1,25 @@
+.registrationContainer {
+	display: flex;
+	height: 100%;
+	min-height: 100%;
+	flex-grow: 1;
+	width: 100%;
+	margin: auto;
+}
+
+.registrationForm {
+	vertical-align: center;
+	margin: auto;
+	width: 100%;
+	max-width: 500px;
+}
+
+.registrationTitle {
+	margin: 10px 0;
+}
+
+.buttonBlock {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}

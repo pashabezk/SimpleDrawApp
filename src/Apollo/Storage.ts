@@ -1,7 +1,7 @@
-// Storage for apollo client
-
 import {makeVar, ReactiveVar} from "@apollo/client";
 import {TOOLS} from "../Constants/Tools";
+
+// Storage for apollo client
 
 export const toolsVar = makeVar(TOOLS.square);
 
@@ -12,7 +12,6 @@ interface IToolSettingsVar {
 	filled: boolean;
 	rotation?: number; // rotation angle in degrees
 }
-
 
 /** Interface for regular polygon settings tool */
 interface IRegularPolygonSettingsTool extends IToolSettingsVar {

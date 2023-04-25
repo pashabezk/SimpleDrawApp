@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./MainPage.module.css";
-import Canvas from "../Canvas/Canvas";
+import Canvas from "./Canvas/Canvas";
 import Tools from "./Tools/Tools";
 import ToolSettings from "./Tools/ToolSettings";
 

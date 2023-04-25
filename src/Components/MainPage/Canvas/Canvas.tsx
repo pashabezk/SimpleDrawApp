@@ -1,12 +1,12 @@
 import React, {useEffect, useRef} from "react";
 import styles from "./Canvas.module.css";
-import drawSquare from "../../CanvasUtils/DrawingShapes/DrawSquare";
-import drawCircle from "../../CanvasUtils/DrawingShapes/DrawCircle";
-import {circleSettingsVar, regularPolygonSettingsVar, squareSettingsVar, starSettingsVar, toolsVar, triangleSettingsVar} from "../../Apollo/Storage";
-import {TOOLS} from "../../Constants/Tools";
-import drawTriangle from "../../CanvasUtils/DrawingShapes/DrawTriangle";
-import drawStar from "../../CanvasUtils/DrawingShapes/DrawStar";
-import drawRegularPolygon from "../../CanvasUtils/DrawingShapes/DrawRegularPolygon";
+import drawSquare from "../../../CanvasUtils/DrawingShapes/DrawSquare";
+import drawCircle from "../../../CanvasUtils/DrawingShapes/DrawCircle";
+import {circleSettingsVar, regularPolygonSettingsVar, squareSettingsVar, starSettingsVar, toolsVar, triangleSettingsVar} from "../../../Apollo/Storage";
+import {TOOLS} from "../../../Constants/Tools";
+import drawTriangle from "../../../CanvasUtils/DrawingShapes/DrawTriangle";
+import drawStar from "../../../CanvasUtils/DrawingShapes/DrawStar";
+import drawRegularPolygon from "../../../CanvasUtils/DrawingShapes/DrawRegularPolygon";
 
 const Canvas = () => {
 	const canvas = useRef(null);
