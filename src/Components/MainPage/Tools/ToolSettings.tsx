@@ -55,23 +55,26 @@ const ToolSettings = () => {
 	return (
 		<div className={styles.toolSettingsWrapper}>
 			<div className={styles.toolSettingsGroup}>
-				<label htmlFor="color">Цвет</label>
-				<input
-					type="color"
-					id="color"
-					name="color"
-					value={settings.color}
-					onChange={handleColorChange}
-				/>
-				<br/>
-				<input
-					type="checkbox"
-					id="filled"
-					name="filled"
-					checked={settings.filled}
-					onChange={handleFillChange}
-				/>
-				<label htmlFor="filled">Заливка</label>
+				<div className={styles.oneParamGroup}>
+					<label htmlFor="color">Цвет</label>
+					<input
+						type="color"
+						id="color"
+						name="color"
+						value={settings.color}
+						onChange={handleColorChange}
+					/>
+				</div>
+				<div className={styles.oneParamGroup}>
+					<input
+						type="checkbox"
+						id="filled"
+						name="filled"
+						checked={settings.filled}
+						onChange={handleFillChange}
+					/>
+					<label htmlFor="filled">Заливка</label>
+				</div>
 			</div>
 			<div className={styles.toolSettingsGroup}>
 				{body}

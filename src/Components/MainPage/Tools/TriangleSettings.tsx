@@ -1,6 +1,8 @@
+import React from "react";
 import {useReactiveVar} from "@apollo/client";
 import {triangleSettingsVar} from "../../../Apollo/Storage";
-import React from "react";
+import styles from "../MainPage.module.css";
+import {Input} from "antd";
 
 /**
  * Component with settings for triangle tool
@@ -25,41 +27,42 @@ const TriangleSettings = () => {
 
 	return (
 		<>
-			<label htmlFor="squareSize">Размер</label>
-			<input
-				type="range"
-				id="triangleSize"
-				name="triangleSize"
-				min="1"
-				max="500"
-				value={settings.size}
-				onChange={handleSizeChange}
-			/>
-			<input
-				type="number"
-				min="1"
-				max="500"
-				value={settings.size}
-				onChange={handleSizeChange}
-			/>
-			<br/>
-			<label htmlFor="squareRotation">Поворот</label>
-			<input
-				type="range"
-				id="squareRotation"
-				name="squareRotation"
-				min="0"
-				max="359"
-				value={settings.rotation}
-				onChange={handleRotationAngleChange}
-			/>
-			<input
-				type="number"
-				min="0"
-				max="359"
-				value={settings.rotation}
-				onChange={handleRotationAngleChange}
-			/>
+			<div className={styles.oneParamGroup}>
+				<label htmlFor="squareSize">Размер</label>
+				<input
+					type="range"
+					min="1"
+					max="500"
+					value={settings.size}
+					onChange={handleSizeChange}
+				/>
+				<Input
+					type="number"
+					id="triangleSize"
+					min="1"
+					max="500"
+					value={settings.size}
+					onChange={handleSizeChange}
+				/>
+			</div>
+			<div className={styles.oneParamGroup}>
+				<label htmlFor="squareRotation">Поворот</label>
+				<input
+					type="range"
+					min="0"
+					max="359"
+					value={settings.rotation}
+					onChange={handleRotationAngleChange}
+				/>
+				<Input
+					type="number"
+					id="squareRotation"
+					min="0"
+					max="359"
+					value={settings.rotation}
+					onChange={handleRotationAngleChange}
+				/>
+			</div>
 		</>
 	);
 };

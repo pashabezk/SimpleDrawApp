@@ -25,9 +25,10 @@
 }
 
 .toolSettingsWrapper {
-	display: flex;
-	gap: 15px;
 	margin-bottom: 10px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 25px;
 }
 
 .toolSettingsWrapper input {
@@ -35,14 +36,28 @@
 }
 
 .toolSettingsWrapper input[type="color"] {
-	min-width: 30px;
+	min-width: 50px;
 }
 
 .toolSettingsGroup {
-	display: block;
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
 }
 
 .toolSettingsGroup label,
-.toolSettingsGroup input[type="range"] {
+.toolSettingsGroup input[type="range"],
+.toolSettingsGroup input[type="color"] {
 	cursor: pointer;
+}
+
+.oneParamGroup {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 5px;
+}
+
+.oneParamGroup label {
+	margin: 0;
 }

@@ -43,6 +43,7 @@ const Canvas = () => {
 		});
 	};
 
+	/** Handler for window resize */
 	const handleWindowResize = () => {
 		// @ts-ignore
 		const parent = canvas.current.parentNode;
@@ -106,6 +107,7 @@ const Canvas = () => {
 			}
 		}
 
+		// add new shape
 		shapesStorageVar([
 			...shapesStorage,
 			{

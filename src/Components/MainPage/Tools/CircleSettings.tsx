@@ -2,6 +2,7 @@ import {useReactiveVar} from "@apollo/client";
 import {circleSettingsVar} from "../../../Apollo/Storage";
 import React from "react";
 import {Input} from "antd";
+import styles from "../MainPage.module.css";
 
 /**
  * Component with settings for circle tool
@@ -18,12 +19,11 @@ const CircleSettings = () => {
 	};
 
 	return (
-		<>
+		<div className={styles.oneParamGroup}>
 			<label htmlFor="circleSize">Радиус</label>
 			<input
 				type="range"
 				id="circleSize"
-				name="circleSize"
 				min="1"
 				max="500"
 				value={settings.size}
@@ -37,7 +37,7 @@ const CircleSettings = () => {
 				onChange={handleSizeChange}
 				width={"100px"}
 			/>
-		</>
+		</div>
 	);
 };
 
