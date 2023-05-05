@@ -2,26 +2,45 @@ import React, {useEffect, useRef} from "react";
 import styles from "./Canvas.module.css";
 import drawSquare from "../../../CanvasUtils/DrawingShapes/DrawSquare";
 import drawCircle from "../../../CanvasUtils/DrawingShapes/DrawCircle";
-import {circleSettingsVar, drawSettingsVar, regularPolygonSettingsVar, squareSettingsVar, starSettingsVar, toolsVar, triangleSettingsVar} from "../../../Apollo/Storage";
+import {circleSettingsVar, drawSettingsVar, regularPolygonSettingsVar, shapesStorageVar, squareSettingsVar, starSettingsVar, toolsVar, triangleSettingsVar} from "../../../Apollo/Storage";
 import {TOOLS} from "../../../Constants/Tools";
 import drawTriangle from "../../../CanvasUtils/DrawingShapes/DrawTriangle";
 import drawStar from "../../../CanvasUtils/DrawingShapes/DrawStar";
 import drawRegularPolygon from "../../../CanvasUtils/DrawingShapes/DrawRegularPolygon";
+import {useReactiveVar} from "@apollo/client";
 
 const Canvas = () => {
 	const canvas = useRef(null);
+	const shapesStorage = useReactiveVar(shapesStorageVar);
 
-	const draw = (ctx: CanvasRenderingContext2D) => {
-		ctx.strokeStyle = "green"; // draw smile
-		ctx.beginPath();
-		ctx.arc(75, 75, 50, 0, Math.PI * 2, true); // Outer circle
-		ctx.moveTo(110, 75);
-		ctx.arc(75, 75, 35, 0, Math.PI, false); // Mouth (clockwise)
-		ctx.moveTo(65, 65);
-		ctx.arc(60, 65, 5, 0, Math.PI * 2, true); // Left eye
-		ctx.moveTo(95, 65);
-		ctx.arc(90, 65, 5, 0, Math.PI * 2, true); // Right eye
-		ctx.stroke();
+	/**
+	 * Function for redraw canvas
+	 * @param {CanvasRenderingContext2D} context canvas context
+	 */
+	const draw = (context: CanvasRenderingContext2D) => {
+		// clear canvas
+		context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+
+		// draw each shape
+		shapesStorageVar().forEach(shape => {
+			switch (shape.type) {
+				case TOOLS.circle:
+					drawCircle(context, shape.position.x, shape.position.y, shape.size, shape.color, shape.filled);
+					break;
+				case TOOLS.square:
+					drawSquare(context, shape.position.x, shape.position.y, shape.size, shape.rotation, shape.color, shape.filled);
+					break;
+				case TOOLS.triangle:
+					drawTriangle(context, shape.position.x, shape.position.y, shape.size, shape.rotation, shape.color, shape.filled);
+					break;
+				case TOOLS.star:
+					drawStar(context, shape.position.x, shape.position.y, shape.size, shape.verticesNumber, shape.rotation, shape.color, shape.filled);
+					break;
+				case TOOLS.regularPolygon:
+					drawRegularPolygon(context, shape.position.x, shape.position.y, shape.size, shape.verticesNumber, shape.rotation, shape.color, shape.filled);
+					break;
+			}
+		});
 	};
 
 	const handleWindowResize = () => {
@@ -39,6 +58,7 @@ const Canvas = () => {
 		draw(context);
 	}
 
+	// need to calculate canvas size on first render
 	useEffect(() => {
 		handleWindowResize();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,32 +81,47 @@ const Canvas = () => {
 			x: (e.clientX - rect.left) / (rect.right - rect.left) * context.canvas.width,
 			y: (e.clientY - rect.top) / (rect.bottom - rect.top) * context.canvas.height
 		};
-		// console.log(pos);
-		const {color, filled} = drawSettingsVar();
+
+		let shapeSetting;
 		switch (toolsVar()) {
-			case TOOLS.circle:
-				drawCircle(context, pos.x, pos.y, circleSettingsVar().size, color, filled);
-				break;
-			case TOOLS.square: {
-				let settings = squareSettingsVar();
-				drawSquare(context, pos.x, pos.y, settings.size, settings.rotation, color, filled);
+			case TOOLS.circle: {
+				shapeSetting = circleSettingsVar();
 				break;
 			}
-			case TOOLS.triangle:
-				drawTriangle(context, pos.x, pos.y, triangleSettingsVar().size, triangleSettingsVar().rotation, color, filled);
+			case TOOLS.square: {
+				shapeSetting = squareSettingsVar();
 				break;
+			}
+			case TOOLS.triangle: {
+				shapeSetting = triangleSettingsVar();
+				break;
+			}
 			case TOOLS.star: {
-				let settings = starSettingsVar();
-				drawStar(context, pos.x, pos.y, settings.size, settings.verticesNumber, settings.rotation, color, filled);
+				shapeSetting = starSettingsVar();
 				break;
 			}
 			case TOOLS.regularPolygon: {
-				let settings = regularPolygonSettingsVar();
-				drawRegularPolygon(context, pos.x, pos.y, settings.size, settings.verticesNumber, settings.rotation, color, filled);
+				shapeSetting = regularPolygonSettingsVar();
 				break;
 			}
 		}
-	}
+
+		shapesStorageVar([
+			...shapesStorage,
+			{
+				type: toolsVar(),
+				position: {
+					x: pos.x,
+					y: pos.y
+				},
+				...drawSettingsVar(),
+				...shapeSetting
+			}
+		]);
+
+		console.log(shapesStorageVar());
+		draw(context);
+	};
 
 	return (
 		<canvas ref={canvas} className={styles.canvas} onClick={onClick}/>

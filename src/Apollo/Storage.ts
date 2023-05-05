@@ -3,6 +3,7 @@ import {TOOLS} from "../Constants/Tools";
 
 // Storage for apollo client
 
+/** Var for storing current tool */
 export const toolsVar = makeVar(TOOLS.square);
 
 /** Interface for tool settings */
@@ -21,6 +22,22 @@ interface IDrawSettingsVar {
 	color: string;
 	filled: boolean;
 }
+
+export interface IShapeStoreData {
+	type: TOOLS;
+	position: {
+		x: number,
+		y: number
+	}
+	color: string;
+	filled: boolean;
+	size: number;
+	rotation?: number; // rotation angle in degrees
+	verticesNumber?: number // number of vertices
+}
+
+/** Storage for all shapes on canvas */
+export const shapesStorageVar: ReactiveVar<IShapeStoreData[]> = makeVar([] as IShapeStoreData[]);
 
 /** Settings for all tools */
 export const drawSettingsVar: ReactiveVar<IDrawSettingsVar> = makeVar({

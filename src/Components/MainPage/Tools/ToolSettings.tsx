@@ -78,6 +78,6 @@ const ToolSettings = () => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default ToolSettings;
