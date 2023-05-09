@@ -1,5 +1,7 @@
 :root {
 	--header-background: #001529;
+	--closed-commentary-color: #073069;
+	--closed-commentary-hover-color: #ffbf00;
 }
 
 body {

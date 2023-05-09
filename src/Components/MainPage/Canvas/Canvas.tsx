@@ -8,6 +8,7 @@ import drawTriangle from "../../../CanvasUtils/DrawingShapes/DrawTriangle";
 import drawStar from "../../../CanvasUtils/DrawingShapes/DrawStar";
 import drawRegularPolygon from "../../../CanvasUtils/DrawingShapes/DrawRegularPolygon";
 import {useReactiveVar} from "@apollo/client";
+import {openNewCommentWindow} from "../../../CanvasUtils/CommentariesUtils";
 
 const Canvas = () => {
 	const canvas = useRef(null);
@@ -74,7 +75,7 @@ const Canvas = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const onClick: React.MouseEventHandler<HTMLCanvasElement> = (e: React.MouseEvent<HTMLCanvasElement>) => {
+	const handleClick: React.MouseEventHandler<HTMLCanvasElement> = (e: React.MouseEvent<HTMLCanvasElement>) => {
 		// @ts-ignore
 		const context = canvas.current.getContext("2d");
 		const rect = context.canvas.getBoundingClientRect();
@@ -125,8 +126,25 @@ const Canvas = () => {
 		draw(context);
 	};
 
+	const handleRightMouseClick: React.MouseEventHandler<HTMLCanvasElement> = (e) => {
+		e.preventDefault();
+		// @ts-ignore
+		const context = canvas.current.getContext("2d");
+		const rect = context.canvas.getBoundingClientRect();
+		const pos = {
+			x: (e.clientX - rect.left) / (rect.right - rect.left) * context.canvas.width,
+			y: (e.clientY - rect.top) / (rect.bottom - rect.top) * context.canvas.height
+		};
+		openNewCommentWindow(pos.x, pos.y);
+	};
+
 	return (
-		<canvas ref={canvas} className={styles.canvas} onClick={onClick}/>
+		<canvas
+			ref={canvas}
+			className={styles.canvas}
+			onClick={handleClick}
+			onContextMenu={handleRightMouseClick}
+		/>
 	);
 };
 

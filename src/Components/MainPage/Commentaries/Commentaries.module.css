@@ -1,0 +1,50 @@
+.commentaryWrapper {
+	position: absolute;
+	border-radius: 0 50% 50% 50%;
+	background-color: var(--closed-commentary-color);;
+	color: white;
+	padding: 4px 6px 5px 8px;
+	cursor: pointer;
+}
+
+.commentaryWrapper:hover {
+	color: var(--closed-commentary-hover-color);
+}
+
+.openCommentWrapper {
+	min-width: 100px;
+	max-width: 300px;
+	position: absolute;
+	border-radius: 0 10px 10px 10px;
+	background-color: white;
+	border: solid black 2px;
+	padding: 5px;
+	z-index: 100;
+}
+
+.buttonBar {
+	width: 100%;
+	margin-bottom: 5px;
+	display: flex;
+	gap: 5px;
+	justify-content: flex-end;
+}
+
+.content {
+	display: flex;
+	gap: 10px;
+	align-items: flex-start;
+}
+
+.avatar {
+	min-width: 24px;
+}
+
+.author {
+	margin-top: 0;
+	font-weight: bold;
+}
+
+.textarea {
+	margin-bottom: 5px;
+}

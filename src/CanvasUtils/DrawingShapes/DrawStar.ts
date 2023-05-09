@@ -1,5 +1,5 @@
 import drawPolygon from "./DrawPolygon";
-import {degreesToRadians, linearShiftPolygon, rotatePoint} from "./DrawTriangle";
+import {degreesToRadians, linearShiftPolygon, rotatePoint} from "../CoordinatesUtils";
 
 /**
  * Function for drawing star on canvas
