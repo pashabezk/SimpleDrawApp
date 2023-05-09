@@ -18,7 +18,7 @@ const OpenedCommentary = ({comment}: { comment: ICommentary }) => {
 
 	// close commentary if click was outside element
 	useOnClickOutside(ref, () => {
-		if (isModalConfirmDeleteOpen)
+		if (!isModalConfirmDeleteOpen)
 			setOpenCloseComment(comment.commentId, false)
 	});
 

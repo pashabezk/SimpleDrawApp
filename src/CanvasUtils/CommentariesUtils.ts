@@ -7,13 +7,14 @@ import {commentariesStorageVar, newCommentaryVar} from "../Apollo/Storage";
  * @param {string} text commentary text
  */
 export const addComment = (x: number, y: number, text: string) => {
+	const storage = commentariesStorageVar();
 	commentariesStorageVar([
-		...commentariesStorageVar(),
+		...storage,
 		{
 			projectId: 1,
 			authorId: 1,
 			authorName: "Pavel",
-			commentId: commentariesStorageVar().length + 1,
+			commentId: storage[storage.length - 1].commentId + 1,
 			text: text,
 			date: new Date().toDateString(),
 			time: new Date().getTime().toString(),

@@ -24,7 +24,7 @@ const useOnClickOutside = (
 			document.removeEventListener("touchstart", listener);
 		};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [ref]);
+	}, [ref, handler]);
 };
 
 export default useOnClickOutside;
