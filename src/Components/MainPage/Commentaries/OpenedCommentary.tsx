@@ -1,10 +1,11 @@
-import React, {useRef} from "react";
+import React, {useRef, useState} from "react";
 import styles from "./Commentaries.module.css";
 import {Avatar} from "antd";
 import {CloseOutlined, DeleteOutlined, UserOutlined} from "@ant-design/icons";
 import {deleteComment, setOpenCloseComment} from "../../../CanvasUtils/CommentariesUtils";
 import useOnClickOutside from "../../../Hooks/useOnClickOutside";
 import {ICommentary} from "../../../Apollo/Interfaces";
+import ModalDeleteCommentary from "./ModalDeleteCommentary";
 
 /**
  * Opened commentary for canvas
@@ -13,9 +14,13 @@ import {ICommentary} from "../../../Apollo/Interfaces";
  */
 const OpenedCommentary = ({comment}: { comment: ICommentary }) => {
 	const ref = useRef(null);
+	const [isModalConfirmDeleteOpen, setIsModalConfirmDeleteOpen] = useState(false);
 
 	// close commentary if click was outside element
-	useOnClickOutside(ref, () => setOpenCloseComment(comment.commentId, false));
+	useOnClickOutside(ref, () => {
+		if (isModalConfirmDeleteOpen)
+			setOpenCloseComment(comment.commentId, false)
+	});
 
 	return (
 		<div
@@ -29,7 +34,7 @@ const OpenedCommentary = ({comment}: { comment: ICommentary }) => {
 			<div className={styles.buttonBar}>
 				<DeleteOutlined
 					style={{color: "red"}}
-					onClick={() => deleteComment(comment.commentId)}
+					onClick={() => setIsModalConfirmDeleteOpen(true)}
 				/>
 				<CloseOutlined
 					onClick={() => setOpenCloseComment(comment.commentId, false)}
@@ -42,6 +47,11 @@ const OpenedCommentary = ({comment}: { comment: ICommentary }) => {
 					<p>{comment.text}</p>
 				</div>
 			</div>
+			<ModalDeleteCommentary
+				isOpened={isModalConfirmDeleteOpen}
+				handleCancelClick={() => setIsModalConfirmDeleteOpen(false)}
+				handleDeleteClick={() => deleteComment(comment.commentId)}
+			/>
 		</div>
 	);
 };
