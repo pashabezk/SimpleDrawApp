@@ -13,7 +13,7 @@ export const addComment = (x: number, y: number, text: string) => {
 		{
 			projectId: 1,
 			authorId: 1,
-			authorName: "Pavel",
+			authorName: "Guest",
 			commentId: storage[storage.length - 1].commentId + 1,
 			text: text,
 			date: new Date().toDateString(),

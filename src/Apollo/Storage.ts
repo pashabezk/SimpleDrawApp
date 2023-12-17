@@ -51,35 +51,13 @@ export const regularPolygonSettingsVar: ReactiveVar<IRegularPolygonSettingsTool>
 const testComments: ICommentary[] = [{
 	projectId: 1,
 	authorId: 1,
-	authorName: "Pavel",
+	authorName: "Greeting",
 	commentId: 1,
-	text: "hello",
+	text: "Hello! You could leave comments by right mouse click on canvas",
 	date: "22.10.2023",
 	time: "13:00",
 	x: 10,
 	y: 10,
-	isOpened: false
-}, {
-	projectId: 1,
-	authorId: 1,
-	authorName: "Ivan",
-	commentId: 2,
-	text: "hello2",
-	date: "22.10.2023",
-	time: "13:00",
-	x: 100,
-	y: 100,
-	isOpened: true
-}, {
-	projectId: 1,
-	authorId: 1,
-	authorName: "Alice",
-	commentId: 3,
-	text: "Here is a longlonglonglong longlonglong longlonglonglonglong longlonglong comment",
-	date: "22.10.2023",
-	time: "13:00",
-	x: 150,
-	y: 150,
 	isOpened: true
 }];
 
