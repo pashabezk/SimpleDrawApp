@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <ellipse style="stroke: rgb(0, 0, 0); fill-opacity: 0; fill: none; stroke-width: 5px;" cx="141.199" cy="86.502" rx="49.33" ry="49.33"/>
+  <rect x="50.915" y="86.193" width="95.558" height="95.558" style="stroke: rgb(0, 0, 0); fill-opacity: 0; fill: none; stroke-width: 5px;"/>
+  <path d="M 65.26 26.624 L 120.869 120.32 L 9.652 120.32 L 65.26 26.624 Z" style="stroke: rgb(0, 0, 0); fill-opacity: 0; fill: none; stroke-width: 5px;"/>
+</svg>
