@@ -38,7 +38,7 @@ export const rotatePolygon = (
 	angle: number
 ): Array<[number, number]> => {
 	// need to subtract angle from 360, because Y axis is reversed
-	const angleInRadians = degreesToRadians(360 - angle);
+	const angleInRadians = degreesToRadians(angle);
 	const sinAngle = Math.sin(angleInRadians);
 	const cosAngle = Math.cos(angleInRadians);
 
@@ -62,6 +62,6 @@ export const linearShiftPolygon = (
 	y0 = 0
 ): Array<[number, number]> => {
 	return polygon.map(([x, y]) => {
-		return [x0 + x, y0 - y];
+		return [x0 + x, y0 + y];
 	});
 };

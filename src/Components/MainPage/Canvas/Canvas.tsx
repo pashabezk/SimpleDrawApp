@@ -14,6 +14,8 @@ const Canvas = () => {
 	const canvas = useRef(null);
 	const shapesStorage = useReactiveVar(shapesStorageVar);
 
+
+	console.log(shapesStorage);
 	/**
 	 * Function for redraw canvas
 	 * @param {CanvasRenderingContext2D} context canvas context
