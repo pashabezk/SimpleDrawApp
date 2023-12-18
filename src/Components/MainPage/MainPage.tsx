@@ -1,12 +1,13 @@
 import React from "react";
+import {useReactiveVar} from "@apollo/client";
 import styles from "./MainPage.module.css";
 import Canvas from "./Canvas/Canvas";
 import Tools from "./Tools/Tools";
 import ToolSettings from "./Tools/ToolSettings";
 import Commentaries from "./Commentaries/Commentaries";
 import {newCommentaryVar} from "../../Apollo/Storage";
-import {useReactiveVar} from "@apollo/client";
 import NewCommentary from "./Commentaries/NewCommentary";
+import DownloadBtn from "./DownloadButton/DownloadBtn";
 
 /**
  * Draw page
@@ -27,6 +28,9 @@ const MainPage = (props: any) => {
 					newCommentary.isCreating
 					&& <NewCommentary x={newCommentary.x} y={newCommentary.y} text={newCommentary.text}/>
 				}
+			</div>
+			<div className={styles.downloadBtnContainer}>
+				<DownloadBtn/>
 			</div>
 		</>
 	);

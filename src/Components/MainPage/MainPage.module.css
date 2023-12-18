@@ -62,3 +62,8 @@
 .oneParamGroup label {
 	margin: 0;
 }
+
+.downloadBtnContainer {
+	display: flex;
+	justify-content: flex-end;
+}

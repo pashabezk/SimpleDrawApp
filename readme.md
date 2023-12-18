@@ -13,9 +13,10 @@ This app contain canvas on which you could:
   * triangle,
   * regular polygon,
   * star;
-* leave comments.
+* leave comments,
+* save created picture.
 
 ## Screenshot
 In the picture below you can see an example of use.
 
-<img src="./screenshots/Example.png" width="600"/>
+<img src="./screenshots/Example.png" width="700"/>

@@ -9,6 +9,7 @@ import drawStar from "../../../CanvasUtils/DrawingShapes/DrawStar";
 import drawRegularPolygon from "../../../CanvasUtils/DrawingShapes/DrawRegularPolygon";
 import {useReactiveVar} from "@apollo/client";
 import {openNewCommentWindow} from "../../../CanvasUtils/CommentariesUtils";
+import {CANVAS_HTML_ID} from "../../../Constants/Canvas";
 
 const Canvas = () => {
 	const canvas = useRef(null);
@@ -143,6 +144,7 @@ const Canvas = () => {
 	return (
 		<canvas
 			ref={canvas}
+			id={CANVAS_HTML_ID}
 			className={styles.canvas}
 			onClick={handleClick}
 			onContextMenu={handleRightMouseClick}
