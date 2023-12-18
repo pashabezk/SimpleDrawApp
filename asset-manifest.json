@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/SimpleDrawApp/static/css/main.d9218c52.css",
-    "main.js": "/SimpleDrawApp/static/js/main.0f41baa9.js",
+    "main.js": "/SimpleDrawApp/static/js/main.bb2c064f.js",
     "static/css/845.5d82f6ee.chunk.css": "/SimpleDrawApp/static/css/845.5d82f6ee.chunk.css",
     "static/js/845.d666f4a0.chunk.js": "/SimpleDrawApp/static/js/845.d666f4a0.chunk.js",
     "static/css/939.41e0fc9f.chunk.css": "/SimpleDrawApp/static/css/939.41e0fc9f.chunk.css",
     "static/js/939.c062b2bc.chunk.js": "/SimpleDrawApp/static/js/939.c062b2bc.chunk.js",
     "static/js/393.2bfff250.chunk.js": "/SimpleDrawApp/static/js/393.2bfff250.chunk.js",
-    "static/css/139.2b4fa8b7.chunk.css": "/SimpleDrawApp/static/css/139.2b4fa8b7.chunk.css",
-    "static/js/139.c799125c.chunk.js": "/SimpleDrawApp/static/js/139.c799125c.chunk.js",
+    "static/css/112.7bac313b.chunk.css": "/SimpleDrawApp/static/css/112.7bac313b.chunk.css",
+    "static/js/112.4ffee429.chunk.js": "/SimpleDrawApp/static/js/112.4ffee429.chunk.js",
     "static/js/406.aab55521.chunk.js": "/SimpleDrawApp/static/js/406.aab55521.chunk.js",
     "static/js/507.f3dd05e0.chunk.js": "/SimpleDrawApp/static/js/507.f3dd05e0.chunk.js",
     "static/js/151.6763384b.chunk.js": "/SimpleDrawApp/static/js/151.6763384b.chunk.js",
@@ -16,14 +16,14 @@
     "static/js/891.c8e6b664.chunk.js": "/SimpleDrawApp/static/js/891.c8e6b664.chunk.js",
     "index.html": "/SimpleDrawApp/index.html",
     "main.d9218c52.css.map": "/SimpleDrawApp/static/css/main.d9218c52.css.map",
-    "main.0f41baa9.js.map": "/SimpleDrawApp/static/js/main.0f41baa9.js.map",
+    "main.bb2c064f.js.map": "/SimpleDrawApp/static/js/main.bb2c064f.js.map",
     "845.5d82f6ee.chunk.css.map": "/SimpleDrawApp/static/css/845.5d82f6ee.chunk.css.map",
     "845.d666f4a0.chunk.js.map": "/SimpleDrawApp/static/js/845.d666f4a0.chunk.js.map",
     "939.41e0fc9f.chunk.css.map": "/SimpleDrawApp/static/css/939.41e0fc9f.chunk.css.map",
     "939.c062b2bc.chunk.js.map": "/SimpleDrawApp/static/js/939.c062b2bc.chunk.js.map",
     "393.2bfff250.chunk.js.map": "/SimpleDrawApp/static/js/393.2bfff250.chunk.js.map",
-    "139.2b4fa8b7.chunk.css.map": "/SimpleDrawApp/static/css/139.2b4fa8b7.chunk.css.map",
-    "139.c799125c.chunk.js.map": "/SimpleDrawApp/static/js/139.c799125c.chunk.js.map",
+    "112.7bac313b.chunk.css.map": "/SimpleDrawApp/static/css/112.7bac313b.chunk.css.map",
+    "112.4ffee429.chunk.js.map": "/SimpleDrawApp/static/js/112.4ffee429.chunk.js.map",
     "406.aab55521.chunk.js.map": "/SimpleDrawApp/static/js/406.aab55521.chunk.js.map",
     "507.f3dd05e0.chunk.js.map": "/SimpleDrawApp/static/js/507.f3dd05e0.chunk.js.map",
     "151.6763384b.chunk.js.map": "/SimpleDrawApp/static/js/151.6763384b.chunk.js.map",
@@ -32,6 +32,6 @@
   },
   "entrypoints": [
     "static/css/main.d9218c52.css",
-    "static/js/main.0f41baa9.js"
+    "static/js/main.bb2c064f.js"
   ]
 }
